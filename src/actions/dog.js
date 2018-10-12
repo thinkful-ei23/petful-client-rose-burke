@@ -61,6 +61,7 @@ export const adoptDog = () => dispatch => {
       return res.json();
   }).then(dog => {
       dispatch(adoptDogSuccess(dog));
+      dispatch(fetchDog());
   }).catch(err => {
       dispatch(adoptDogError(err));
   });
