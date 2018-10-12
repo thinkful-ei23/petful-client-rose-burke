@@ -60,6 +60,7 @@ export const adoptCat = () => dispatch => {
       return res.json();
   }).then(cat => {
       dispatch(adoptCatSuccess(cat));
+      dispatch(fetchCat());
   }).catch(err => {
       dispatch(adoptCatError(err));
   });
