@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function ToAdopt(props) {
-
+  console.log(props);
   //imageURL:'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg', 
   // imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
   // name: 'Fluffy',
@@ -28,7 +28,7 @@ export default function ToAdopt(props) {
         <dt>Story</dt>
         <dd>{props.animal.story}</dd>
       </dl>
-      <button onClick={ () => props.onAdoptPet()}>Adopt</button>
+      <button onClick={() => props.onAdoptPet()}>Adopt</button>
     </main>
   </div>
   );

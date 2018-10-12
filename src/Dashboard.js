@@ -7,12 +7,13 @@ import {fetchCat, adoptCat} from './actions/cat';
 
 class Dashboard extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(fetchDog()); 
     this.props.dispatch(fetchCat());
   }
 
   onAdoptDog() {
+    console.log('did it run?')
     this.props.dispatch(adoptDog());
   }
 
@@ -21,21 +22,40 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    return (
-      <div className="parent">
-        <section className="dogToAdopt">
-          <ToAdopt animal={this.props.dog} onAdoptPet={this.onAdoptDog}/>
-        </section >
-        <section className="catToAdopt">
-          <ToAdopt animal={this.props.cat} onAdoptPet={this.onAdoptCat}/> 
-        </section>
-      </div> 
-    );
+    let dogError;
+    let catError;
+
+    if (this.props.dogError) {
+      dogError = <p>The dog could not load properly.</p>
+    }
+
+    if (this.props.catError) {
+      catError = <p>The cat could not load properly.</p>
+    }
+
+    if (this.props.dog && this.props.cat) {
+      return (
+        <div className="parent">
+          <section className="dogToAdopt">
+            <ToAdopt animal={this.props.dog} onAdoptPet={() => this.onAdoptDog()}/>
+          </section >
+          <section className="catToAdopt">
+            <ToAdopt animal={this.props.cat} onAdoptPet={() => this.onAdoptCat()}/> 
+          </section>
+        </div> 
+      );
+    } else if (this.props.dogError || this.props.catError) {
+      return <p>{dogError} {catError}</p>
+    } else {
+      return <p>Loading...</p>
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
+    dogError: state.dog.error,
+    catError: state.cat.error,
     dog: state.dog.data,
     cat: state.cat.data
   }
