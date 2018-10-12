@@ -1,3 +1,5 @@
+import {API_BASE_URL} from '../config';
+
 export const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
 export const fetchCatRequest = () => ({
   type: FETCH_CAT_REQUEST,
@@ -34,7 +36,7 @@ export const adoptCatError = (error) => ({
 
 export const fetchCat = () => dispatch => {
   dispatch(fetchCatRequest());
-  fetch('/api/cat').then(res => {
+  fetch(`${API_BASE_URL}/api/cat`).then(res => {
       if (!res.ok) {
           return Promise.reject(res.statusText);
       }
@@ -48,7 +50,7 @@ export const fetchCat = () => dispatch => {
 
 export const adoptCat = () => dispatch => {
   dispatch(adoptCatRequest());
-  fetch('/api/cat', {
+  fetch(`${API_BASE_URL}/api/cat`, {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     // headers: {
     //     "Content-Type": "application/json; charset=utf-8",

@@ -20,7 +20,7 @@ export const dogReducer = (state=initialState, action) => {
       return {...state, loading : false};  
     case actions.ADOPT_DOG_ERROR: 
       return {...state, loading : false, error: action.error};
-      default: 
+    default: 
       return state; 
   }     
 }; 
