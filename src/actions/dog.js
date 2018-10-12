@@ -23,9 +23,8 @@ export const adoptDogRequest = () => ({
 });
 
 export const ADOPT_DOG_SUCCESS = 'ADOPT_DOG_SUCCESS';
-export const adoptDogSuccess = (dog) => ({
+export const adoptDogSuccess = () => ({
   type: ADOPT_DOG_SUCCESS,
-  dog
 });
 
 export const ADOPT_DOG_ERROR = 'ADOPT_DOG_ERROR';
@@ -60,9 +59,9 @@ export const adoptDog = () => dispatch => {
       if (!res.ok) {
           return Promise.reject(res.statusText);
       }
-      return res.json();
-  }).then(dog => {
-      dispatch(adoptDogSuccess(dog));
+      return;
+  }).then(() => {
+      dispatch(adoptDogSuccess());
       dispatch(fetchDog());
   }).catch(err => {
       dispatch(adoptDogError(err));
