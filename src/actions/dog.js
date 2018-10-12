@@ -35,7 +35,7 @@ export const adoptDogError = (error) => ({
 });
 
 export const fetchDog = () => dispatch => {
-  dispatch(fetchDog());
+  dispatch(fetchDogRequest());
   fetch(`${API_BASE_URL}/api/dog`).then(res => {
       if (!res.ok) {
           return Promise.reject(res.statusText);
