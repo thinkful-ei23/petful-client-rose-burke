@@ -6,12 +6,62 @@ export const fetchDogRequest = () => ({
 export const FETCH_DOG_SUCCESS = 'FETCH_DOG_SUCCESS';
 export const fetchDogSuccess = (dog) => ({
   type: FETCH_DOG_SUCCESS,
-  dog,
-
+  dog
 });
 
 export const FETCH_DOG_ERROR = 'FETCH_DOG_ERROR';
 export const fetchDogError = (error) => ({
   type: FETCH_DOG_ERROR,
-  error,
+  error
 });
+
+export const ADOPT_DOG_REQUEST = 'ADOPT_DOG_REQUEST';
+export const adoptDogRequest = () => ({
+  type: ADOPT_DOG_REQUEST,
+});
+
+export const ADOPT_DOG_SUCCESS = 'ADOPT_DOG_SUCCESS';
+export const adoptDogSuccess = (dog) => ({
+  type: ADOPT_DOG_SUCCESS,
+  dog
+});
+
+export const ADOPT_DOG_ERROR = 'ADOPT_DOG_ERROR';
+export const adoptDogError = (error) => ({
+  type: ADOPT_DOG_ERROR,
+  error
+});
+
+export const fetchDog = () => dispatch => {
+  dispatch(fetchDog());
+  fetch('/api/dog').then(res => {
+      if (!res.ok) {
+          return Promise.reject(res.statusText);
+      }
+      return res.json();
+  }).then(dog => {
+      dispatch(fetchDogSuccess(dog));
+  }).catch(err => {
+      dispatch(fetchDogError(err));
+  });
+};
+
+
+export const adoptDog = () => dispatch => {
+  dispatch(adoptDogRequest());
+  fetch('/api/dog', {
+    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+    // headers: {
+    //     "Content-Type": "application/json; charset=utf-8",
+    // },
+}).then(res => {
+      if (!res.ok) {
+          return Promise.reject(res.statusText);
+      }
+      return res.json();
+  }).then(dog => {
+      dispatch(adoptDogSuccess(dog));
+  }).catch(err => {
+      dispatch(adoptDogError(err));
+  });
+};
