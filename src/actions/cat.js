@@ -35,7 +35,7 @@ export const adoptCatError = (error) => ({
 
 export const fetchCat = () => dispatch => {
   dispatch(fetchCatRequest());
-  fetch(`${API_BASE_URL}/api/cat`).then(res => {
+  fetch(`${API_BASE_URL}/cat`).then(res => {
       if (!res.ok) {
           return Promise.reject(res.statusText);
       }
@@ -49,7 +49,7 @@ export const fetchCat = () => dispatch => {
 
 export const adoptCat = () => dispatch => {
   dispatch(adoptCatRequest());
-  fetch(`${API_BASE_URL}/api/cat`, {
+  fetch(`${API_BASE_URL}/cat`, {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     // headers: {
     //     "Content-Type": "application/json; charset=utf-8",

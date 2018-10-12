@@ -17,7 +17,7 @@ export default function ToAdopt(props) {
       </h1>
       <img src={props.animal.imageURL} alt={props.animal.imageDescription}/>
     </header>
-    <main> 
+    <section> 
       <dl>
         <dt>Sex</dt>
         <dd>{props.animal.sex}</dd>
@@ -29,7 +29,7 @@ export default function ToAdopt(props) {
         <dd>{props.animal.story}</dd>
       </dl>
       <button onClick={() => props.onAdoptPet()}>Adopt</button>
-    </main>
+    </section>
   </div>
   );
 }

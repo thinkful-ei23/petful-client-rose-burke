@@ -35,14 +35,14 @@ class Dashboard extends React.Component {
 
     if (this.props.dog && this.props.cat) {
       return (
-        <div className="parent">
+        <main className="parent">
           <section className="dogToAdopt">
             <ToAdopt animal={this.props.dog} onAdoptPet={() => this.onAdoptDog()}/>
           </section >
           <section className="catToAdopt">
             <ToAdopt animal={this.props.cat} onAdoptPet={() => this.onAdoptCat()}/> 
           </section>
-        </div> 
+        </main> 
       );
     } else if (this.props.dogError || this.props.catError) {
       return <p>{dogError} {catError}</p>

@@ -35,7 +35,7 @@ export const adoptDogError = (error) => ({
 
 export const fetchDog = () => dispatch => {
   dispatch(fetchDogRequest());
-  fetch(`${API_BASE_URL}/api/dog`).then(res => {
+  fetch(`${API_BASE_URL}/dog`).then(res => {
       if (!res.ok) {
           return Promise.reject(res.statusText);
       }
@@ -50,7 +50,7 @@ export const fetchDog = () => dispatch => {
 
 export const adoptDog = () => dispatch => {
   dispatch(adoptDogRequest());
-  fetch(`${API_BASE_URL}/api/dog`, {
+  fetch(`${API_BASE_URL}/dog`, {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
     // headers: {
     //     "Content-Type": "application/json; charset=utf-8",
