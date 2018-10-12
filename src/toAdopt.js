@@ -28,7 +28,7 @@ export default function ToAdopt(props) {
         <dt>Story</dt>
         <dd>{props.animal.story}</dd>
       </dl>
-      <button>Adopt</button>
+      <button onClick={ () => props.onAdoptPet()}>Adopt</button>
     </main>
   </div>
   );

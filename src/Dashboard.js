@@ -26,14 +26,18 @@ export default class Dashboard extends React.Component {
     }
   }
 
+  onAdoptPet() {
+    console.log(`You've Adopted : `);
+  }
+
   render() {
     return (
       <div className="parent">
         <section className="catToAdopt">
-          <ToAdopt animal={this.state.dogs}/>
+          <ToAdopt animal={this.state.dogs} onAdoptPet={this.onAdoptPet}/>
         </section >
         <section className="dogToAdopt">
-          <ToAdopt animal={this.state.cats} /> 
+          <ToAdopt animal={this.state.cats} onAdoptPet={this.onAdoptPet}/> 
         </section>
       </div> 
     );
