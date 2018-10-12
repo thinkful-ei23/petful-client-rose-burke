@@ -5,4 +5,4 @@ import {combineReducers} from 'redux';
 export const rootReducer = combineReducers({
   cat: catReducer,
   dog: dogReducer
-})
+});

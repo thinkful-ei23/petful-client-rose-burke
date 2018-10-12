@@ -1,4 +1,4 @@
-import * as actions from './actions/cat';
+import * as actions from '../actions/cat';
 
 const initialState = {
     data: null,
