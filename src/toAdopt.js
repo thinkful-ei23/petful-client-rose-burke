@@ -15,7 +15,7 @@ export default function ToAdopt(props) {
       <h1> 
        {props.animal.name}
       </h1>
-      <img src={props.animal.imageUrl} alt={props.animal.imageDescription}/>
+      <img src={props.animal.imageURL} alt={props.animal.imageDescription}/>
     </header>
     <main> 
       <dl>
