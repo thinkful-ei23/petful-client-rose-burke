@@ -1,30 +1,8 @@
 import React from 'react';
 import ToAdopt from './ToAdopt';
+import {connect} from 'react-redux';
 
-export default class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cats : {
-        imageURL:'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg', 
-        imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
-        name: 'Fluffy',
-        sex: 'Female',
-        age: 2,
-        breed: 'Bengal',
-        story: 'Thrown on the street'
-      },
-      dogs : {
-        imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
-        imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
-        name: 'Zeus',
-        sex: 'Male',
-        age: 3,
-        breed: 'Golden Retriever',
-        story: 'Owner Passed away'
-      }
-    }
-  }
+class Dashboard extends React.Component {
 
   onAdoptPet() {
     console.log(`You've Adopted : `);
@@ -34,12 +12,21 @@ export default class Dashboard extends React.Component {
     return (
       <div className="parent">
         <section className="catToAdopt">
-          <ToAdopt animal={this.state.dogs} onAdoptPet={this.onAdoptPet}/>
+          <ToAdopt animal={this.props.dog} onAdoptPet={this.onAdoptPet}/>
         </section >
         <section className="dogToAdopt">
-          <ToAdopt animal={this.state.cats} onAdoptPet={this.onAdoptPet}/> 
+          <ToAdopt animal={this.props.cat} onAdoptPet={this.onAdoptPet}/> 
         </section>
       </div> 
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    dog: state.dog.data,
+    cat: state.cat.data
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard);
